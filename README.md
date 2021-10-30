@@ -1,3 +1,3 @@
 # clock-analog
 
-<a href="https://divinecoder.com/html/clock/">https://divinecoder.com/html/clock/</a>
+<a target="_blank" href="https://divinecoder.com/html/clock/">https://divinecoder.com/html/clock/</a>
