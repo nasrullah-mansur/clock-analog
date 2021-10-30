@@ -1,0 +1,218 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Zen Antique", serif;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #dcdee6;
+    overflow-x: hidden;
+}
+
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin-top: -80px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #e13e1b;
+    z-index: 9;
+}
+
+#theClock {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@media (max-width: 475px) {
+    #theClock {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+#theClock::before {
+    content: "";
+    width: calc(100% + 30px);
+    height: calc(100% + 30px);
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    z-index: 1;
+    border-radius: 50%;
+    -webkit-box-shadow: -3px -3px 7px #ffffff73, 2px 2px 5px rgba(94, 104, 121, 0.288);
+    box-shadow: -3px -3px 7px #ffffff73, 2px 2px 5px rgba(94, 104, 121, 0.288);
+    background-color: #dde1e7;
+}
+
+#theClock::after {
+    content: "";
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #e13e1b;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+.handler {
+    --rotation: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotate(calc(var(--rotation) * 1deg));
+    -ms-transform: rotate(calc(var(--rotation) * 1deg));
+    transform: rotate(calc(var(--rotation) * 1deg));
+    z-index: 99;
+}
+
+.handler.hr {
+    --rotation: 300;
+}
+
+.handler.hr::before,
+.handler.min::before,
+.handler.sec::before {
+    content: "";
+    background-color: #000;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 999;
+    -webkit-clip-path: polygon(40% 0, 60% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(40% 0, 60% 0, 100% 100%, 0% 100%);
+}
+
+.handler.hr::before {
+    width: 12px;
+    height: 32%;
+    border-radius: 6px;
+}
+
+.handler.min {
+    --rotation: 60;
+}
+
+.handler.min::before {
+    width: 10px;
+    height: 48%;
+    border-radius: 4px;
+}
+
+.handler.sec {
+    --rotation: 0;
+}
+
+.handler.sec::before {
+    width: 6px;
+    height: 50%;
+    background-color: #e13e1b;
+}
+
+.handler.sec::after {
+    content: "";
+    width: 5px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background-color: #e13e1b;
+}
+
+.number {
+    --rotation: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    z-index: 9;
+    -webkit-transform: rotate(calc(var(--rotation) * 1deg));
+    -ms-transform: rotate(calc(var(--rotation) * 1deg));
+    transform: rotate(calc(var(--rotation) * 1deg));
+}
+
+.number span {
+    --rotation: 0;
+    display: inline-block;
+    font-size: 32px;
+    -webkit-transform: rotate(calc(var(--rotation) * 1deg));
+    -ms-transform: rotate(calc(var(--rotation) * 1deg));
+    transform: rotate(calc(var(--rotation) * 1deg));
+}
+
+#secondStripe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 50%;
+    text-align: center;
+}
+
+#secondStripe span {
+    --rotation: 0;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: rotate(calc(var(--rotation) * 1deg));
+    -ms-transform: rotate(calc(var(--rotation) * 1deg));
+    transform: rotate(calc(var(--rotation) * 1deg));
+}
+
+#secondStripe span::after {
+    content: "";
+    width: 1px;
+    height: 8px;
+    background-color: #000;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 100%;
+}
+
+#secondStripe span.circle::after {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
